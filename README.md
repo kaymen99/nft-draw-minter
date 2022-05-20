@@ -3,6 +3,8 @@
 <!-- ABOUT THE PROJECT -->
 ## NFT Drawing Minter
 
+This is a NFT dapp built for evm compatible blockchains (Ethereum, Polygon, BSC,...), it enables user to draw it's own digital art and minted as an NFT
+
 <p align="center">
   <img alt="Dark" src="https://user-images.githubusercontent.com/83681204/169620068-693d0aa3-5c85-4110-a0ee-c7b13ac4baa0.png" width="100%">
 </p>
@@ -82,8 +84,7 @@ The code for the UI can be found in the src folder (as in all reactjs apps)
 ## How it Works
 
 ### contracts
-
-
+The application is built with ERC721.sol nft standard contract from openzepplin and more specificaly the ERC721URIStorage extension, it allows user to mint an nft and set it's correspanding IPFS metadata URI
 
 ### User interface
 
