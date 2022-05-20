@@ -4,11 +4,9 @@
 ## NFT Drawing Minter
 
 <p align="center">
-  <img alt="Dark" src="" width="100%">
+  <img alt="Dark" src="https://user-images.githubusercontent.com/83681204/169620068-693d0aa3-5c85-4110-a0ee-c7b13ac4baa0.png" width="100%">
 </p>
 
- 
-### Built With
 
 * [Solidity](https://docs.soliditylang.org/)
 * [Hardhat](https://hardhat.org/getting-started/)
@@ -129,15 +127,3 @@ If you have any question or problem running this project just contact me: aymenM
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
