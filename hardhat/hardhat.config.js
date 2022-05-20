@@ -24,7 +24,7 @@ module.exports = {
     },
     ganache: {
       url: "http://127.0.0.1:7545",
-      accounts: ["2464793475c78e5b4b9f4195a2bdf6949b040552edefd9bbd7b54d5ef8014232"]
+      accounts: ["ganahce-private-key"]
     }
     // mumbai: {
     //   url: "https://rpc-mumbai.matic.today",
