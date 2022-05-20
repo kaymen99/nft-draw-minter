@@ -1,63 +1,136 @@
-# Getting Started with Create React App
+<div id="top"></div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- ABOUT THE PROJECT -->
+## NFT Drawing Minter
 
-## Available Scripts
+<p align="center">
+  <img alt="Dark" src="" width="100%">
+</p>
 
-In the project directory, you can run:
+ 
+### Built With
 
-### `npm start`
+* [Solidity](https://docs.soliditylang.org/)
+* [Hardhat](https://hardhat.org/getting-started/)
+* [React.js](https://reactjs.org/)
+* [ethers.js](https://docs.ethers.io/v5/)
+* [web3modal](https://github.com/Web3Modal/web3modal)
+* [material ui](https://mui.com/getting-started/installation/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+       <li><a href="#prerequisites">Prerequisites</a></li>
+       <li><a href="#project-structure">Project structure</a></li>
+       <li><a href="#initial-setup">Initial Setup</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#how-it-works">How it Works</a>
+     <ul>
+       <li><a href="#contracts">Contracts</a></li>
+       <li><a href="#user-interface">User interface</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-to-use">How to Use</a></li>
+    <li><a href="#future-developements">Future developements</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- GETTING STARTED -->
+## Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Please install or have installed the following:
+* [nodejs](https://nodejs.org/en/download/) and [yarn](https://classic.yarnpkg.com/en/)
+* [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn) Chrome extension installed in your browser
+* [Ganache](https://trufflesuite.com/ganache/) for local smart contracts deployement and testing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Project structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This a full stack web3 decentralized application built using Hardhat/React js, so the project is devided into 2 main parts:
+<ul>
+ <li><b>Smart contract/backend side:</b></li>
+ Located in the hardhat folder, it contains the blockchain developement envirenment built using Hardhat, with all the smart contracts tests, deployement scripts and the plugins used (openzepplin contracts). 
+  <li><b>front-end side:</b></li>
+The code for the UI can be found in the src folder (as in all reactjs apps)
+</ul>
 
-### `npm run eject`
+### Initial Setup
+1. Clone the repository and install all the required packages by running:
+   ```sh
+   git clone https://github.com/Aymen1001/nft-draw-minter.git
+   cd nft-draw-minter
+   yarn
+   ```
+2. Start the ganache network and export the private key of the first account to the hardhat.config.js file in the hardhat folder, it will be used as admin for deploying the Airbnb contract:
+   ```sh
+   ganache: {
+      url: "http://127.0.0.1:7545",
+      accounts: ["ganahce-private-key"]
+    }
+   ```
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- Working EXAMPLES -->
+## How it Works
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### contracts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### User interface
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+<!-- USAGE EXAMPLES -->
+## How to Use
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+After going through all the installation and setup steps, you'll need to deploy the smart contract to the ganache network by running: 
+   ```sh
+   cd hardhat
+   npx hardhat run scripts/deploy-nft-minter.js --network ganache
+   ```
+This will create a config.js file and an artifacts folder and transfer them to the src folder to enable the interaction between the contract and the UI
 
-### Analyzing the Bundle Size
+To start the app you have to go back to the DecentralAirbnb folder and run the command:
+   ```sh
+   yarn start
+   ```
+   
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<!-- FUTURE DEVELOPEMENT -->
+## Future developements
 
-### Making a Progressive Web App
+   
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<!-- Contact -->
+## Contact
 
-### Advanced Configuration
+If you have any question or problem running this project just contact me: aymenMir1001@gmail.com
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
