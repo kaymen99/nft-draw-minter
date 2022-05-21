@@ -87,7 +87,7 @@ The code for the UI can be found in the src folder (as in all reactjs apps)
 The application is built with ERC721.sol nft standard contract from openzepplin and more specificaly the ERC721URIStorage extension, it allows user to mint an nft and set it's correspanding IPFS metadata URI
 
 ### User interface
-The front end is structured into 3 pages:
+The front end is structured into 4 pages:
 * The home page is the landing page of the app, it contains a list of all the previously minted nfts.
 
 ![Capture d’écran 2022-05-20 à 20 04 43](https://user-images.githubusercontent.com/83681204/169628955-e8ded120-fd78-4dad-bcd0-6a3f83c41ad2.png)
@@ -96,6 +96,9 @@ The front end is structured into 3 pages:
 
 ![Capture d’écran 2022-05-20 à 19 53 36](https://user-images.githubusercontent.com/83681204/169628978-747402c1-9e51-4a73-953b-e5025a9428d2.png)
 
+* The Nft page gives details about each item: creator, name, description, (and optionaly the price).
+
+![Capture d’écran 2022-05-20 à 19 53 36](https://user-images.githubusercontent.com/83681204/169651032-1b7480ec-e2be-4efd-afaa-519951fb17e1.png)
 
 * Each user has it's own Dashboard, it contains all the nft that he has created.
 
@@ -132,7 +135,6 @@ To start the app you have to go back to the DecentralAirbnb folder and run the c
 
 * Creating an nft marketplace where users can exchange their drawn nfts.
 * Give user the ability to create nfts using AI (text to image).
-* Add view page for each nft.
 
    
 <p align="right">(<a href="#top">back to top</a>)</p>
