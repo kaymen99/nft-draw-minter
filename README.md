@@ -97,7 +97,7 @@ The front end is structured into 3 pages:
 ![Capture d’écran 2022-05-20 à 19 53 36](https://user-images.githubusercontent.com/83681204/169628978-747402c1-9e51-4a73-953b-e5025a9428d2.png)
 
 
-* Each user has it's own Dashboard, it contains all the nft created that he has created.
+* Each user has it's own Dashboard, it contains all the nft that he has created.
 
 ![Capture d’écran 2022-05-20 à 19 52 05](https://user-images.githubusercontent.com/83681204/169628982-46147205-ebd1-4aac-9163-9b26ed79dda4.png)
 
