@@ -123,7 +123,7 @@ If you want to test the functionnalities of the NFTMinter contract you can do it
    npx hardhat test
    ```
 
-To start the app you have to go back to the DecentralAirbnb folder and run the command:
+To start the app you have to go back to the NFTMinter folder and run the command:
    ```sh
    yarn start
    ```
