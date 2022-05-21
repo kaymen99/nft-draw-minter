@@ -115,6 +115,11 @@ After going through all the installation and setup steps, you'll need to deploy 
    ```
 This will create a config.js file and an artifacts folder and transfer them to the src folder to enable the interaction between the contract and the UI
 
+If you want to test the functionnalities of the NFTMinter contract you can do it by running:
+   ```sh
+   npx hardhat test
+   ```
+
 To start the app you have to go back to the DecentralAirbnb folder and run the command:
    ```sh
    yarn start
