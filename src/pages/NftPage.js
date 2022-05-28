@@ -8,7 +8,6 @@ import contract from "../artifacts/contracts/NFTMinter.sol/NFTMinter.json";
 import { contractAddress } from "../utils/contracts-config";
 import Identicon from '../components/Identicon';
 
-const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 
 const Item = () => {
     const { id } = useParams()
@@ -18,10 +17,10 @@ const Item = () => {
     )
 
     const getItemDetails = async () => {
+        const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
         const nftContract = new ethers.Contract(contractAddress, contract.abi, provider);
 
         const creator = await nftContract.ownerOf(Number(id))
-        console.log(creator)
         const creatorItemsCount = await nftContract.balanceOf(creator)
         const nftTokenUri = await nftContract.tokenURI(Number(id))
 
@@ -34,19 +33,9 @@ const Item = () => {
             description: metaData.data.description,
             imageUrl: metaData.data.image
         })
-        console.log(
-            {
-                creator: creator,
-                creatorNftCount: Number(creatorItemsCount),
-                name: metaData.data.name,
-                description: metaData.data.description,
-                imageUrl: metaData.data.image
-            }
-        )
     }
 
     useEffect(() => {
-        console.log(Number(id))
         getItemDetails()
     }, [])
 
