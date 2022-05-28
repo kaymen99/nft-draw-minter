@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { BlockPicker } from "react-color";
 import Tippy from "@tippyjs/react";
@@ -7,11 +8,12 @@ import SignatureCanvas from "react-signature-canvas"
 import { create } from "ipfs-http-client";
 import { ethers } from "ethers";
 import { Form, Button } from "react-bootstrap"
+import { CircularProgress } from "@mui/material"
 
 import contract from "../artifacts/contracts/NFTMinter.sol/NFTMinter.json";
-import { contractAddress } from "../utils/contracts-config";
+import { contractAddress, networkDeployedTo } from "../utils/contracts-config";
+import networksMap from "../utils/networksMap.json";
 
-const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
 
 const ipfsClient = create("https://ipfs.infura.io:5001/api/v0")
 const ipfsBaseUrl = "https://ipfs.infura.io/ipfs/"
@@ -19,7 +21,9 @@ const ipfsBaseUrl = "https://ipfs.infura.io/ipfs/"
 function CreateNft() {
     const elementRef = useRef()
     const navigate = useNavigate()
+    const data = useSelector((state) => state.blockchain.value)
 
+    const [loading, setLoading] = useState(false)
     const [bgColor, setBgColor] = useState("#E18715")
 
     const [formInput, setFormInput] = useState(
@@ -44,25 +48,26 @@ function CreateNft() {
     }
 
     const mint = async () => {
-        try {
-            console.log(formInput)
-            const signer = provider.getSigner()
-            const nftContract = new ethers.Contract(contractAddress, contract.abi, signer);
-
-            const image = getImage()
-            const addedFile = await ipfsClient.add(image)
-            const imageURI = ipfsBaseUrl + addedFile.path
-
-            const { name, description } = formInput
-            if (!name || !description || !imageURI) return
-
-            const data = JSON.stringify({
-                name: name, description: description, image: imageURI
-            })
-
-            const mintingFee = await nftContract.getMintingFee()
-
+        if (data.network === networksMap[networkDeployedTo]) {
             try {
+                setLoading(true)
+                const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+                const signer = provider.getSigner()
+                const nftContract = new ethers.Contract(contractAddress, contract.abi, signer);
+
+                const image = getImage()
+                const addedFile = await ipfsClient.add(image)
+                const imageURI = ipfsBaseUrl + addedFile.path
+
+                const { name, description } = formInput
+                if (!name || !description || !imageURI) return
+
+                const data = JSON.stringify({
+                    name: name, description: description, image: imageURI
+                })
+
+                const mintingFee = await nftContract.getMintingFee()
+
                 const added = await ipfsClient.add(data)
                 const url = ipfsBaseUrl + added.path
                 const mint_tx = await nftContract.mintNFT(
@@ -71,15 +76,17 @@ function CreateNft() {
                 )
                 await mint_tx.wait()
 
-            } catch (error) {
-                window.alert('Error while minting, Please try again')
+                setFormInput({ name: "", description: "" })
+                setLoading(false)
+                navigate("/dashboard")
             }
-
-            setFormInput({ name: "", description: "" })
-            navigate("/dashboard")
-        }
-        catch (err) {
-            console.log(err)
+            catch (err) {
+                console.log(err)
+                window.alert('Error while minting, Please try again')
+                setLoading(false)
+            }
+        } else {
+            window.alert(`Please Switch to the ${networksMap[networkDeployedTo]} network`)
         }
     }
 
@@ -131,7 +138,7 @@ function CreateNft() {
 
                     <br />
                     <Button type="submit" variant="warning" onClick={mint}>
-                        Mint
+                        {loading ? <CircularProgress color="inherit" /> : "Mint"}
                     </Button>
                 </div>
 
@@ -142,6 +149,5 @@ function CreateNft() {
 }
 
 export default CreateNft;
-
 
 
