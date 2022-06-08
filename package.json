@@ -59,5 +59,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-etherscan": "^3.0.4",
+    "dotenv": "^16.0.1",
+    "hardhat-abi-exporter": "^2.9.0"
   }
 }
