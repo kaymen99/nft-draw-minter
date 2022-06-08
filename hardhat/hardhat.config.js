@@ -1,4 +1,6 @@
 require("@nomiclabs/hardhat-waffle");
+require("dotenv").config();
+require("@nomiclabs/hardhat-etherscan");
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -16,27 +18,45 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
+
+const POLYGON_RPC_URL = process.env.POLYGON_RPC_URL
+const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL
+
 module.exports = {
-  solidity: "0.8.4",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.4",
+      },
+      {
+        version: "0.6.6",
+      },
+    ],
+  },
   networks: {
     hardhat: {
-      chainId: 1337
+      chainId: 31337
     },
     ganache: {
       chainId: 1337,
       url: "http://127.0.0.1:7545",
-      accounts: ["ganahce-private-key"]
+      accounts: [process.env.PRIVATE_KEY]
     }
     // mumbai: {
-    //   url: "https://rpc-mumbai.matic.today",
-    //   accounts: [process.env.pk]
+    //   url: MUMBAI_RPC_URL,
+    //   accounts: [process.env.PRIVATE_KEY],
+    //   chainId: 80001,
     // },
     // polygon: {
-    //   url: "https://polygon-rpc.com/",
-    //   accounts: [process.env.pk]
+    //   url: POLYGON_RPC_URL,
+    //   accounts: [process.env.PRIVATE_KEY]
+    //   chainId: 137,
     // }
   },
   paths: {
     artifacts: "../src/artifacts"
+  },
+  etherscan: {
+    apikey: process.env.ETHERSCAN_API_KEY,
   }
 };
