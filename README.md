@@ -71,13 +71,16 @@ The code for the UI can be found in the src folder (as in all reactjs apps)
    cd nft-draw-minter
    yarn
    ```
-2. Start the ganache network and export the private key of the first account to the hardhat.config.js file in the hardhat folder, it will be used as admin for deploying the Airbnb contract:
+2. Private key & Network Urls setup: in the hardhat folder you'll find a .env file, it's used to store all the sensible data/keys like your private key, RPC url for mainnet, rinkeby, kovan... (you get RPC url from services like Infura or Alchemy for free), you can also provide Etherscan api key to allow automatic contracts verifications :
    ```sh
-   ganache: {
-      url: "http://127.0.0.1:7545",
-      accounts: ["ganahce-private-key"]
-    }
+    RINKEBY_ETHERSCAN_API_KEY="your etherscan api key"
+    RINKEBY_RPC_URL="https://eth-rinkeby.alchemyapi.io/v2/apiKey"
+    POLYGON_RPC_URL="Your polygon RPC url from alchemy or infura"
+    MUMBAI_RPC_URL="Your mumbai RPC url from alchemy or infura"
+    PRIVATE_KEY="ganahce-private-key"
    ```
+* <b>IMPORTANT : </b> For the purpose of testing you can just provide the ganache private key and ignore all the other variables.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Working EXAMPLES -->
